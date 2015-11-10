@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CEX-G8-h4g">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--Blog List View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="BlogListViewController" id="BYZ-38-t0r" customClass="BlogListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="38080519_p0" translatesAutoresizingMaskIntoConstraints="NO" id="19W-6W-af1">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kme-q8-6xY">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="rsj-UY-3O5"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="iAd-ng-EfX"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="19W-6W-af1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8CQ-Zq-Huf"/>
+                            <constraint firstItem="19W-6W-af1" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="MA2-Th-6bA"/>
+                            <constraint firstItem="Kme-q8-6xY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Xt9-2c-6sU"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Kme-q8-6xY" secondAttribute="bottom" id="YZT-2i-eKp"/>
+                            <constraint firstAttribute="trailing" secondItem="Kme-q8-6xY" secondAttribute="trailing" id="aRJ-Lk-1KO"/>
+                            <constraint firstItem="Kme-q8-6xY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="dYJ-uZ-25k"/>
+                            <constraint firstItem="19W-6W-af1" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="iWY-Uk-UEN"/>
+                            <constraint firstItem="19W-6W-af1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uZs-0S-bJv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="oGK-IZ-l1U"/>
+                    <connections>
+                        <outlet property="tableView" destination="Kme-q8-6xY" id="CsP-tW-TKi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117" y="429"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vxz-3H-kDI">
+            <objects>
+                <navigationController storyboardIdentifier="BlogViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="CEX-G8-h4g" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DSN-zb-S7J">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ueh-jN-ETZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xud-Ky-39e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="404" y="429"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="38080519_p0" width="1000" height="1713"/>
+    </resources>
+</document>
