@@ -50,7 +50,7 @@ static ASIDownloadCache *myCache;
 
 - (void)requestBlogsWithCategroy:(BlogCategroyName)categroy page:(NSInteger)pages{
     [SVProgressHUD show];
-    NSString *urlStr = [NSString stringWithFormat:@"http://www.ios122.com/find_php/index.php?viewController=YFPostListViewController&model[category]=%@&model[page]=%d",[self categroyNameWithCategroy:categroy],pages];
+    NSString *urlStr = [NSString stringWithFormat:@"http://www.ios122.com/find_php/index.php?viewController=YFPostListViewController&model[category]=%@&model[page]=%ld",[self categroyNameWithCategroy:categroy],pages];
     NSURL *url = [NSURL URLWithString:urlStr];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request setDownloadCache:myCache];
