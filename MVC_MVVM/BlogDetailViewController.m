@@ -9,6 +9,8 @@
 #import "BlogDetailViewController.h"
 
 @interface BlogDetailViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *titleLable;
+@property (weak, nonatomic) IBOutlet UIWebView *bodyView;
 
 @end
 
@@ -16,17 +18,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     [self backNavigationBarItemWithText:nil font:nil images:@[[UIImage imageNamed:@"btn_back_normal"],[UIImage imageNamed:@"btn_back_pressed"]] target:self action:@selector(gotoBack:)];
+    self.bodyView.alpha = 0.8;
+    self.bodyView.scalesPageToFit = NO;
+    [self updateView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateView) name:NOTIFICATION_OF_DETAIL object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 - (void)gotoBack:(UIButton *)sender{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)updateView{
+    self.title = self.blog.title;
+    self.titleLable.text = self.blog.blogDetail.title;
+    [self.bodyView loadHTMLString:self.blog.blogDetail.body baseURL:nil];
 }
 
 /*

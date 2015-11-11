@@ -146,8 +146,54 @@ static ASIDownloadCache *myCache;
         return BlogCategroyNameAutolayout;
     }else{
         NSLog(@"BlogCategroyName ERROR : %@",self.id);
-        return nil;
+        return BlogCategroyNameAll;
     }
+}
+
+- (BlogDetail *)blogDetail{
+    if (!blogDetail) {
+        [self requestBlogDetail];
+    }
+    return blogDetail;
+}
+
+- (void)requestBlogDetail{
+    [SVProgressHUD show];
+    NSString *urlStr = [NSString stringWithFormat:@"http://www.ios122.com/find_php/index.php?viewController=YFPostViewController&model[id]=%@",self.id];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setDownloadCache:myCache];
+    [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+    __weak ASIHTTPRequest *temp = request;
+    [request setCompletionBlock:^{
+        if (temp.responseData) {
+            [SVProgressHUD dismiss];
+            NSDictionary *response = [NSJSONSerialization JSONObjectWithData:temp.responseData options:kNilOptions error:nil];
+            blogDetail = [[BlogDetail alloc] initWithDic:response];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_OF_DETAIL object:nil];
+        }
+    }];
+    [request setFailedBlock:^{
+        if (temp.error) {
+            if (temp.error.code == 1) {
+                [SVProgressHUD showErrorWithStatus:@"网络异常"];
+            }
+        }
+    }];
+    [request startAsynchronous];
+}
+
+@end
+
+@implementation BlogDetail
+
+- (instancetype)initWithDic:(NSDictionary *)dic{
+    self = [super init];
+    if (self) {
+        self.title = [dic objectForKey:@"title"];
+        self.body = [dic objectForKey:@"body"];
+    }
+    return self;
 }
 
 @end

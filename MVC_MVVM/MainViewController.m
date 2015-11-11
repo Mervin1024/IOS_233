@@ -21,7 +21,6 @@
     
     [self setTabBarItems];
     [self setTabBarBackImage];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,7 +32,7 @@
     NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:self.viewControllers];
     viewControllers = [NSMutableArray arrayWithCapacity:4];
     
-    CGFloat scale = 7.0f;
+    CGFloat scale = 7.5f;
     
     UITabBarItem *item0 = [[UITabBarItem alloc] initWithTitle:@"ui" image:nil tag:TabBarIndexUi];
     UIImage *image0 = [[UIImage imageWithCGImage:[UIImage imageNamed:@"66b173132145d879f919b82b"].CGImage scale:scale orientation:UIImageOrientationUp] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -59,6 +58,9 @@
         controller.blogCategroy = i;
         navigationController.tabBarItem = [items objectAtIndex:i];
         [viewControllers addObject:navigationController];
+        
+        [[items objectAtIndex:i] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
+        [[items objectAtIndex:i] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor greenColor]} forState:UIControlStateSelected];
     }
     
     [self setViewControllers:viewControllers animated:YES];
@@ -70,6 +72,11 @@
     UIImage *scaleImage = [image imageAtRect:CGRectMake(0, scale * image.size.height, image.size.width, (1 - scale) * image.size.height)];
     UIImage *newImage = [scaleImage imageByScalingProportionallyToSize:self.tabBar.bounds.size];
     self.tabBar.backgroundImage = newImage;
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.tabBar.bounds];
+    imageView.image = [UIImage imageNamed:@"blank"];
+    imageView.userInteractionEnabled = YES;
+    [self.tabBar insertSubview:imageView atIndex:0];
 }
 
 /*

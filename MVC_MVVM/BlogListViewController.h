@@ -15,7 +15,6 @@
 
 @interface BlogListViewController : UIViewController
 
-//@property (nonatomic, copy) NSString *categroy;
 @property (nonatomic, assign) BlogCategroyName blogCategroy;
 @end
 

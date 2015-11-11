@@ -77,6 +77,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [SVProgressHUD dismiss];
     [self updateData];
 }
 
@@ -111,6 +112,7 @@
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     BlogDetailViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass([BlogDetailViewController class])];
     controller.hidesBottomBarWhenPushed = YES;
+    controller.blog = [tableData objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

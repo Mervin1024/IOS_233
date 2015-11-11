@@ -11,4 +11,5 @@
 
 @interface BlogDetailViewController : UIViewController
 
+@property (nonatomic, strong) BlogModel *blog;
 @end

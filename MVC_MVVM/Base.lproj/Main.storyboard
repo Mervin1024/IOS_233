@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CEX-G8-h4g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CEX-G8-h4g">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Blog List View Controller-->
@@ -13,25 +14,25 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="38080519_p0" translatesAutoresizingMaskIntoConstraints="NO" id="19W-6W-af1">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kme-q8-6xY">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ZUy-nm-sfj" customClass="BlogListViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ZUy-nm-sfj" customClass="BlogListViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZUy-nm-sfj" id="Vpb-DX-iYa">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="HXZ-BD-pJ6" kind="show" identifier="pushDetail" id="Nep-Lg-brE"/>
+                                            <segue destination="HXZ-BD-pJ6" kind="push" identifier="pushDetail" id="Nep-Lg-brE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -60,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="429"/>
+            <point key="canvasLocation" x="595.73333333333335" y="406.12"/>
         </scene>
         <!--Blog Detail View Controller-->
         <scene sceneID="MpF-Hi-tSK">
@@ -71,14 +72,46 @@
                         <viewControllerLayoutGuide type="bottom" id="tR5-V4-Grg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nLl-AZ-do3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="38080600_p0" translatesAutoresizingMaskIntoConstraints="NO" id="fat-ZB-tab">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hello" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTL-6a-a5M">
+                                <rect key="frame" x="16" y="72" width="49" height="26"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yu8-Oz-ndK">
+                                <rect key="frame" x="16" y="106" width="288" height="420"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Yu8-Oz-ndK" firstAttribute="bottom" secondItem="fat-ZB-tab" secondAttribute="bottom" constant="-42" id="71H-wb-XJN"/>
+                            <constraint firstItem="fat-ZB-tab" firstAttribute="centerY" secondItem="nLl-AZ-do3" secondAttribute="centerY" id="73V-M7-gax"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="RTL-6a-a5M" secondAttribute="leading" id="7cI-qs-95R"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Yu8-Oz-ndK" secondAttribute="trailing" id="eXx-eg-Veu"/>
+                            <constraint firstItem="Yu8-Oz-ndK" firstAttribute="top" secondItem="iLR-fV-cV0" secondAttribute="bottom" constant="42" id="gJl-zG-rvc"/>
+                            <constraint firstItem="fat-ZB-tab" firstAttribute="centerX" secondItem="nLl-AZ-do3" secondAttribute="centerX" id="kZp-gu-iuk"/>
+                            <constraint firstItem="fat-ZB-tab" firstAttribute="width" secondItem="nLl-AZ-do3" secondAttribute="width" id="mOc-2V-u1O"/>
+                            <constraint firstItem="RTL-6a-a5M" firstAttribute="top" secondItem="iLR-fV-cV0" secondAttribute="bottom" constant="8" id="maD-z4-Cqi"/>
+                            <constraint firstItem="Yu8-Oz-ndK" firstAttribute="leading" secondItem="nLl-AZ-do3" secondAttribute="leadingMargin" id="tse-GM-isU"/>
+                            <constraint firstItem="fat-ZB-tab" firstAttribute="height" secondItem="nLl-AZ-do3" secondAttribute="height" id="una-KW-s2c"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="oUY-cJ-UeT"/>
+                    <connections>
+                        <outlet property="bodyView" destination="Yu8-Oz-ndK" id="Ou9-00-EMZ"/>
+                        <outlet property="titleLable" destination="RTL-6a-a5M" id="Ocn-Tw-Khx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBo-fq-nrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1764" y="429"/>
+            <point key="canvasLocation" x="940.79999999999995" y="406.12"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vxz-3H-kDI">
@@ -96,10 +129,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xud-Ky-39e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="404" y="429"/>
+            <point key="canvasLocation" x="215.46666666666667" y="406.12"/>
         </scene>
     </scenes>
     <resources>
         <image name="38080519_p0" width="1000" height="1713"/>
+        <image name="38080600_p0" width="1000" height="1713"/>
     </resources>
 </document>
