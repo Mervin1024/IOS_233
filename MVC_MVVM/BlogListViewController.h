@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BlogModelManager.h"
 
+@interface BlogListViewCell : UITableViewCell
+
+@end
+
 @interface BlogListViewController : UIViewController
 
 //@property (nonatomic, copy) NSString *categroy;

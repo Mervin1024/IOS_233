@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "BlogListViewController.h"
+#import "categroies.h"
 
 @interface MainViewController ()
 
@@ -19,7 +20,8 @@
     [super viewDidLoad];
     
     [self setTabBarItems];
-    
+    [self setTabBarBackImage];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,6 +62,14 @@
     }
     
     [self setViewControllers:viewControllers animated:YES];
+}
+
+- (void)setTabBarBackImage{
+    UIImage *image = [UIImage imageNamed:@"38080519_p0"];
+    CGFloat scale = self.tabBar.frame.origin.y/[UIScreen mainScreen].bounds.size.height;
+    UIImage *scaleImage = [image imageAtRect:CGRectMake(0, scale * image.size.height, image.size.width, (1 - scale) * image.size.height)];
+    UIImage *newImage = [scaleImage imageByScalingProportionallyToSize:self.tabBar.bounds.size];
+    self.tabBar.backgroundImage = newImage;
 }
 
 /*

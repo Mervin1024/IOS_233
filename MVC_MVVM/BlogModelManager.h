@@ -13,6 +13,7 @@
 #import <MJExtension.h>
 #import <SVProgressHUD.h>
 #import <ASIDownloadCache.h>
+#import "categroies.h"
 
 #define NOTIFICATION_OF_CATEGROY(INDEX) [NSString stringWithFormat:@"%ld BLOG DID FINISH",INDEX]
 

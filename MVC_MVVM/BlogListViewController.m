@@ -7,6 +7,30 @@
 //
 
 #import "BlogListViewController.h"
+#import "BlogDetailViewController.h"
+
+@implementation BlogListViewCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        UIView *backView = [[UIView alloc] initWithFrame:self.contentView.frame];
+        backView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.2];
+        [self setSelectedBackgroundView:backView];
+    }
+    return self;
+}
+
+- (instancetype)init{
+    self = [self initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"BlogListCell"];
+    if (self) {
+        
+    }
+    return self;
+}
+
+@end
 
 @interface BlogListViewController ()<UITableViewDataSource, UITableViewDelegate>{
     NSMutableArray *tableData;
@@ -67,11 +91,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BlogListCell"];
+    BlogListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BlogListCell"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"BlogListCell"];
+        cell = [[BlogListViewCell alloc] init];
     }
-    cell.backgroundColor = [UIColor clearColor];
     BlogModel *blog = [tableData objectAtIndex:indexPath.row];
     cell.textLabel.text = blog.title;
     cell.textLabel.textColor = [UIColor whiteColor];
@@ -81,7 +104,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 69;
+    return 49;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
+    BlogDetailViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass([BlogDetailViewController class])];
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

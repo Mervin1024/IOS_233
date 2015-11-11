@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		21CBADE4D31ADA237CF00004 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D64D29D3BED4BF2E448ECA35 /* libPods.a */; };
+		EEEAF6171BF31B370015D302 /* BlogDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEAF6161BF31B370015D302 /* BlogDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EEEAF61A1BF31D800015D302 /* UIViewController+MENavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEAF6191BF31D800015D302 /* UIViewController+MENavigationItem.m */; settings = {ASSET_TAGS = (); }; };
+		EEEAF61E1BF32C490015D302 /* UIImage+Extrnsions.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEAF61D1BF32C490015D302 /* UIImage+Extrnsions.m */; settings = {ASSET_TAGS = (); }; };
 		EEEB98B11BF1BD50004657F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEB98B01BF1BD50004657F7 /* main.m */; };
 		EEEB98B41BF1BD50004657F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEB98B31BF1BD50004657F7 /* AppDelegate.m */; };
 		EEEB98B71BF1BD50004657F7 /* BlogListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEB98B61BF1BD50004657F7 /* BlogListViewController.m */; };
@@ -41,6 +44,13 @@
 		A7103BDD5DD8D6CC8A34AE64 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D64D29D3BED4BF2E448ECA35 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E00ECCA53F22E7D631E551BE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EEEAF6151BF31B370015D302 /* BlogDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogDetailViewController.h; sourceTree = "<group>"; };
+		EEEAF6161BF31B370015D302 /* BlogDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogDetailViewController.m; sourceTree = "<group>"; };
+		EEEAF6181BF31D800015D302 /* UIViewController+MENavigationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MENavigationItem.h"; sourceTree = "<group>"; };
+		EEEAF6191BF31D800015D302 /* UIViewController+MENavigationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MENavigationItem.m"; sourceTree = "<group>"; };
+		EEEAF61B1BF31E5E0015D302 /* categroies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = categroies.h; sourceTree = "<group>"; };
+		EEEAF61C1BF32C490015D302 /* UIImage+Extrnsions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extrnsions.h"; sourceTree = "<group>"; };
+		EEEAF61D1BF32C490015D302 /* UIImage+Extrnsions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extrnsions.m"; sourceTree = "<group>"; };
 		EEEB98AC1BF1BD50004657F7 /* MVC_MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVC_MVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEEB98B01BF1BD50004657F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EEEB98B21BF1BD50004657F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -137,6 +147,8 @@
 				EEEB98E31BF1BDDA004657F7 /* MainViewController.m */,
 				EEEB98B51BF1BD50004657F7 /* BlogListViewController.h */,
 				EEEB98B61BF1BD50004657F7 /* BlogListViewController.m */,
+				EEEAF6151BF31B370015D302 /* BlogDetailViewController.h */,
+				EEEAF6161BF31B370015D302 /* BlogDetailViewController.m */,
 				EEEB98F11BF1DCB4004657F7 /* BlogModelManager.h */,
 				EEEB98F21BF1DCB4004657F7 /* BlogModelManager.m */,
 				EEEB98B81BF1BD50004657F7 /* Main.storyboard */,
@@ -144,6 +156,11 @@
 				EEEB98BD1BF1BD50004657F7 /* LaunchScreen.storyboard */,
 				EEEB98C01BF1BD50004657F7 /* Info.plist */,
 				EEEB98AF1BF1BD50004657F7 /* Supporting Files */,
+				EEEAF61B1BF31E5E0015D302 /* categroies.h */,
+				EEEAF6181BF31D800015D302 /* UIViewController+MENavigationItem.h */,
+				EEEAF6191BF31D800015D302 /* UIViewController+MENavigationItem.m */,
+				EEEAF61C1BF32C490015D302 /* UIImage+Extrnsions.h */,
+				EEEAF61D1BF32C490015D302 /* UIImage+Extrnsions.m */,
 			);
 			path = MVC_MVVM;
 			sourceTree = "<group>";
@@ -339,11 +356,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEEAF61E1BF32C490015D302 /* UIImage+Extrnsions.m in Sources */,
 				EEEB98B71BF1BD50004657F7 /* BlogListViewController.m in Sources */,
+				EEEAF6171BF31B370015D302 /* BlogDetailViewController.m in Sources */,
 				EEEB98B41BF1BD50004657F7 /* AppDelegate.m in Sources */,
 				EEEB98F31BF1DCB4004657F7 /* BlogModelManager.m in Sources */,
 				EEEB98B11BF1BD50004657F7 /* main.m in Sources */,
 				EEEB98E41BF1BDDA004657F7 /* MainViewController.m in Sources */,
+				EEEAF61A1BF31D800015D302 /* UIViewController+MENavigationItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
