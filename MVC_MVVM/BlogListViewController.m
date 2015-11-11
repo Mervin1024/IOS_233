@@ -8,6 +8,7 @@
 
 #import "BlogListViewController.h"
 #import "BlogDetailViewController.h"
+#import <MJRefresh.h>
 
 @implementation BlogListViewCell
 
@@ -46,6 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle];
+    [self setTableViewRefresh];
     tableData = [NSMutableArray array];
     manager = [BlogModelManager shareManager];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:NOTIFICATION_OF_CATEGROY(blogCategroy) object:nil];
@@ -68,6 +70,14 @@
         default:
             break;
     }
+}
+
+- (void)setTableViewRefresh{
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        NSLog(@"refreshing");
+        [self.tableView.mj_header performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -26,7 +26,7 @@
         buttonLeftBarItem.titleLabel.textAlignment = NSTextAlignmentLeft;
         [buttonLeftBarItem setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         CGSize sizeText = [self sizeOfString:text font:buttonLeftBarItem.titleLabel.font sizeConstrained:CGSizeMake(80, 30)];
-        buttonLeftBarItem.frame = CGRectMake(0, yOffset, sizeText.width, 40);
+        buttonLeftBarItem.frame = CGRectMake(0, yOffset, sizeText.width+10, 40);
     }
     if ([images isKindOfClass:[NSArray class]]) {
         UIImage *imageNormal = images.count > 0 ? [images objectAtIndex:0] : nil;
@@ -58,8 +58,8 @@
         }
         buttonrightBarItem.titleLabel.textAlignment = NSTextAlignmentRight;
         [buttonrightBarItem setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        CGSize sizeText = [self sizeOfString:text font:font sizeConstrained:CGSizeMake(80, 30)];
-        buttonrightBarItem.frame = CGRectMake(0, yOffset, sizeText.width, 40);
+        CGSize sizeText = [self sizeOfString:text font:buttonrightBarItem.titleLabel.font sizeConstrained:CGSizeMake(80, 30)];
+        buttonrightBarItem.frame = CGRectMake(0, yOffset, sizeText.width+10, 40);
     }
     if ([images isKindOfClass:[NSArray class]]) {
         UIImage *imageNormal = images.count > 0 ? [images objectAtIndex:0] : nil;

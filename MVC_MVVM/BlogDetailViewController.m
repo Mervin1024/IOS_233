@@ -8,7 +8,9 @@
 
 #import "BlogDetailViewController.h"
 
-@interface BlogDetailViewController ()
+@interface BlogDetailViewController (){
+    BOOL hide;
+}
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
 @property (weak, nonatomic) IBOutlet UIWebView *bodyView;
 
@@ -18,8 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    hide = NO;
     [self backNavigationBarItemWithText:nil font:nil images:@[[UIImage imageNamed:@"btn_back_normal"],[UIImage imageNamed:@"btn_back_pressed"]] target:self action:@selector(gotoBack:)];
+    [self rightNavigationBarItemWithText:@"hide" font:nil images:nil target:self action:@selector(hideBody:)];
     self.bodyView.alpha = 0.8;
     self.bodyView.scalesPageToFit = NO;
     [self updateView];
@@ -33,6 +36,32 @@
 
 - (void)gotoBack:(UIButton *)sender{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)hideBody:(UIButton *)sender{
+    if (!hide) {
+        [UIView animateWithDuration:0.25 animations:^{
+            CGRect frame = self.bodyView.frame;
+            frame.size.height = 0;
+            self.bodyView.frame = frame;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                hide = YES;
+                [sender setTitle:@"show" forState:UIControlStateNormal];
+            }
+        }];
+    }else{
+        [UIView animateWithDuration:0.25 animations:^{
+            CGRect frame = self.bodyView.frame;
+            frame.size.height = [UIScreen mainScreen].bounds.size.height - 64 - 84;
+            self.bodyView.frame = frame;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                hide = NO;
+                [sender setTitle:@"hide" forState:UIControlStateNormal];
+            }
+        }];
+    }
 }
 
 - (void)updateView{
