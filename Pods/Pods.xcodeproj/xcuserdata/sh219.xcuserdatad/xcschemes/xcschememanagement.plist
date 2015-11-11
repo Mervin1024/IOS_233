@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ASIHTTPRequest.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -44,45 +49,70 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Reachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SVProgressHUD-0.8.1.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3A9029B31E2FD19A77AD8F2EBABA5EB4</key>
+		<key>081DC98C2FCDFD2EED70F7E4DB861F16</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5963AFD5C357F2C6162D07152AEA2BE2</key>
+		<key>1893DE70459B9C5430E1E53597BF9817</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>70EBEFC9968CEC36B5CEDAA70A13102C</key>
+		<key>5A3182141B10E290DEFA76830AC220F3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>71CF8B0EBB7C0BB4FDE2DA68EA8E2AD8</key>
+		<key>67DC1C2D03E8EEAFBFD16774196E2D0F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8232FB16CF48A7E13C08EA557CEEB4EB</key>
+		<key>685D7CA82ED18C51FA4E61EECAE9B5AF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9A9764114A402E066F48B237EDCE1DD7</key>
+		<key>6A936A03FB531E3E892287FB43A8A8E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AB6D994064D1E2AA1A83595502D82022</key>
+		<key>8C8C73B766E7BA6AC8452D8909E667DD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AEA60D6893C19DC045D7FFF65238360C</key>
+		<key>9387A304CAA20D792A38F949C283CB8D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C196A7688FB4FEC491C7B98483F41C2E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CC35F17DBBED91E9477C48DC8ED361F6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CC89FF2819C646D4BE52D86605D3CD5F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

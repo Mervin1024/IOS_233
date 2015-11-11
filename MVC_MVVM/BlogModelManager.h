@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AppDelegate.h"
 #import <AFNetworking.h>
-#import <MBProgressHUD.h>
+#import <ASIHTTPRequest.h>
 #import <MJExtension.h>
+#import <SVProgressHUD.h>
+#import <ASIDownloadCache.h>
 
 #define NOTIFICATION_OF_CATEGROY(INDEX) [NSString stringWithFormat:@"%ld BLOG DID FINISH",INDEX]
 

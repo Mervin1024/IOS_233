@@ -20,20 +20,40 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - ASIHTTPRequest (1.8.2):
+    - ASIHTTPRequest/ASIWebPageRequest (= 1.8.2)
+    - ASIHTTPRequest/CloudFiles (= 1.8.2)
+    - ASIHTTPRequest/Core (= 1.8.2)
+    - ASIHTTPRequest/S3 (= 1.8.2)
+  - ASIHTTPRequest/ASIWebPageRequest (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/CloudFiles (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/Core (1.8.2):
+    - Reachability
+  - ASIHTTPRequest/S3 (1.8.2):
+    - ASIHTTPRequest/Core
   - MBProgressHUD (0.9.1)
   - MJExtension (3.0.3)
   - MJRefresh (3.0.1)
+  - Reachability (3.2)
+  - SVProgressHUD-0.8.1 (0.8)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.3)
+  - ASIHTTPRequest (~> 1.8.2)
   - MBProgressHUD (~> 0.9.1)
   - MJExtension (~> 3.0.3)
   - MJRefresh (~> 3.0.1)
+  - SVProgressHUD-0.8.1 (~> 0.8)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MJExtension: de557e1c48ef3212590d3203764c8003fae68815
   MJRefresh: ca22bb7197c4a17a0491763773cd5cb106b2a810
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SVProgressHUD-0.8.1: ee9e6e58b5b5ffaf3f1a62c2dc409763470df143
 
 COCOAPODS: 0.38.2

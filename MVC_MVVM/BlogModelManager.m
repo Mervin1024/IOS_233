@@ -9,18 +9,26 @@
 #import "BlogModelManager.h"
 
 @interface BlogModelManager (){
-    MBProgressHUD *HUD;
+    
 }
 
 @end
 
 static BlogModelManager *manager;
+static ASIDownloadCache *myCache;
 @implementation BlogModelManager
 @synthesize blogs;
 - (instancetype)init{
     if ((self = [super init])) {
         blogs = [NSMutableArray array];
-//        [self requestBlogs];
+        [self requestBlogs];
+        ASIDownloadCache *cache = [[ASIDownloadCache alloc] init];
+        myCache = cache;
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [paths objectAtIndex:0];
+        [myCache setStoragePath:[documentDirectory stringByAppendingPathComponent:@"resource"]];
+        [myCache setDefaultCachePolicy:ASIOnlyLoadIfNotCachedCachePolicy];
     }
     return self;
 }
@@ -34,26 +42,37 @@ static BlogModelManager *manager;
 }
 
 - (void)requestBlogs{
-    [self requestBlogsWithCategroy:BlogCategroyNameUi];
-    [self requestBlogsWithCategroy:BlogCategroyNameNetWork];
-    [self requestBlogsWithCategroy:BlogCategroyNameTool];
-    [self requestBlogsWithCategroy:BlogCategroyNameAutolayout];
+//    [self requestBlogsWithCategroy:BlogCategroyNameUi];
+//    [self requestBlogsWithCategroy:BlogCategroyNameNetWork];
+//    [self requestBlogsWithCategroy:BlogCategroyNameTool];
+//    [self requestBlogsWithCategroy:BlogCategroyNameAutolayout];
 }
 
-- (void)requestBlogsWithCategroy:(BlogCategroyName)categroy{
-    HUD = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSString *urlStr = [NSString stringWithFormat:@"http://www.ios122.com/find_php/index.php?viewController=YFPostListViewController&model[category]=%@&model[page]=%d",[self categroyNameWithCategroy:categroy],0];
-    [manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [HUD hide:YES];
-        NSArray *array = [BlogModel mj_objectArrayWithKeyValuesArray:responseObject];
-        [self addBlogsFromArray:array];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_OF_CATEGROY(categroy) object:nil];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        HUD = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-        HUD.labelText = @"网络错误";
-        [HUD hide:YES afterDelay:1.0];
+- (void)requestBlogsWithCategroy:(BlogCategroyName)categroy page:(NSInteger)pages{
+    [SVProgressHUD show];
+    NSString *urlStr = [NSString stringWithFormat:@"http://www.ios122.com/find_php/index.php?viewController=YFPostListViewController&model[category]=%@&model[page]=%d",[self categroyNameWithCategroy:categroy],pages];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setDownloadCache:myCache];
+    [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+    __weak ASIHTTPRequest *temp = request;
+    [request setCompletionBlock:^{
+        if (temp.responseData) {
+            [SVProgressHUD dismiss];
+            NSArray *response = [NSJSONSerialization JSONObjectWithData:temp.responseData options:kNilOptions error:nil];
+            NSArray *array = [BlogModel mj_objectArrayWithKeyValuesArray:response];
+            [self addBlogsFromArray:array];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_OF_CATEGROY(categroy) object:nil];
+        }
     }];
+    [request setFailedBlock:^{
+        if (temp.error) {
+            if (temp.error.code == 1) {
+                [SVProgressHUD showErrorWithStatus:@"网络异常"];
+            }
+        }
+    }];
+    [request startAsynchronous];
 }
 
 - (void)addBlogsFromArray:(NSArray *)array{
@@ -73,11 +92,8 @@ static BlogModelManager *manager;
         }
     }
     if ([categroy count] <= pages * 20) {
-        [self requestBlogsWithCategroy:blogCategroy];
+        [self requestBlogsWithCategroy:blogCategroy page:pages];
     }
-//    for (long i = pages * 20; i < (pages+1) * 20; i++) {
-//        [data addObject:[categroy objectAtIndex:i]];
-//    }
     if (pages == 0) {
         [data addObjectsFromArray:categroy];
     }
