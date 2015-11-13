@@ -38,17 +38,19 @@
     BlogModelManager *manager;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (assign, nonatomic) NSInteger page;
 
 @end
 
 @implementation BlogListViewController
-@synthesize blogCategroy;
+@synthesize blogCategroy, page;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle];
     [self setTableViewRefresh];
     tableData = [NSMutableArray array];
+    page = 0;
     manager = [BlogModelManager shareManager];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:NOTIFICATION_OF_CATEGROY(blogCategroy) object:nil];
 }
@@ -93,7 +95,7 @@
 
 - (void)updateData{
 //    [tableData addObjectsFromArray:[manager arrayForCategroyName:blogCategroy page:0]];
-    tableData = [NSMutableArray arrayWithArray:[manager arrayForCategroyName:blogCategroy page:0]];
+    tableData = [NSMutableArray arrayWithArray:[manager arrayForCategroyName:blogCategroy page:page]];
     [self.tableView reloadData];
 }
 

@@ -94,9 +94,9 @@ static ASIDownloadCache *myCache;
     if ([categroy count] <= pages * 20) {
         [self requestBlogsWithCategroy:blogCategroy page:pages];
     }
-    if (pages == 0) {
-        [data addObjectsFromArray:categroy];
-    }
+//    if (pages == 0) {
+    [data addObjectsFromArray:categroy];
+//    }
     
     return data;
 }
