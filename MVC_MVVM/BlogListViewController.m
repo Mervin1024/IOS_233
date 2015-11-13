@@ -53,6 +53,7 @@
     page = 0;
     manager = [BlogModelManager shareManager];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:NOTIFICATION_OF_CATEGROY(blogCategroy) object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noMoreData) name:NO_MORE_BLOGDATA(blogCategroy) object:nil];
 }
 
 - (void)setTitle{
@@ -76,10 +77,12 @@
 
 - (void)setTableViewRefresh{
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        NSLog(@"refreshing");
-        [self.tableView.mj_header performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
+        [self.tableView.mj_header performSelector:@selector(endRefreshing) withObject:nil afterDelay:1];
     }];
-    
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        page ++;
+        [self updateData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,12 +94,29 @@
     [super viewWillAppear:animated];
     [SVProgressHUD dismiss];
     [self updateData];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+//    page = 0;
 }
 
 - (void)updateData{
 //    [tableData addObjectsFromArray:[manager arrayForCategroyName:blogCategroy page:0]];
     tableData = [NSMutableArray arrayWithArray:[manager arrayForCategroyName:blogCategroy page:page]];
     [self.tableView reloadData];
+    if ([tableData count] > (page-1)*20) {
+        if (self.tableView.mj_footer) {
+            [self.tableView.mj_footer endRefreshing];
+        }
+    }
+}
+
+- (void)noMoreData{
+    [self.tableView.mj_footer endRefreshing];
+    [SVProgressHUD showErrorWithStatus:@"没有更多数据了"];
+    page --;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

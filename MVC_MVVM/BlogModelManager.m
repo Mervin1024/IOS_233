@@ -60,6 +60,10 @@ static ASIDownloadCache *myCache;
         if (temp.responseData) {
             [SVProgressHUD dismiss];
             NSArray *response = [NSJSONSerialization JSONObjectWithData:temp.responseData options:kNilOptions error:nil];
+            if (![response[0] isKindOfClass:[NSDictionary class]]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:NO_MORE_BLOGDATA(categroy) object:nil];
+                return;
+            }
             NSArray *array = [BlogModel mj_objectArrayWithKeyValuesArray:response];
             [self addBlogsFromArray:array];
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_OF_CATEGROY(categroy) object:nil];
@@ -94,9 +98,7 @@ static ASIDownloadCache *myCache;
     if ([categroy count] <= pages * 20) {
         [self requestBlogsWithCategroy:blogCategroy page:pages];
     }
-//    if (pages == 0) {
     [data addObjectsFromArray:categroy];
-//    }
     
     return data;
 }

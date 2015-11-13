@@ -17,7 +17,7 @@
 
 #define NOTIFICATION_OF_CATEGROY(INDEX) [NSString stringWithFormat:@"%ld BLOG DID FINISH",INDEX]
 #define NOTIFICATION_OF_DETAIL @"NotificationOfBlogDetail"
-
+#define NO_MORE_BLOGDATA(INDEX) [NSString stringWithFormat:@"No More %ld Blog Data",INDEX]
 typedef NS_ENUM(NSInteger, BlogCategroyName) {
     BlogCategroyNameUi = 0,
     BlogCategroyNameNetWork,
